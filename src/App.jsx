@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const songs = [
-  { title: "Pehla Nasha", movie: "Jo Jeeta Wohi Sikandar", file: "/music/song1.wav" },
-  { title: "Do Dil Mil Rahe Hain", movie: "Pardes", file: "/music/song2.wav" },
-  { title: "Ek Ladki Ko Dekha", movie: "1942: A Love Story", file: "/music/song3.wav" },
-  { title: "Mera Dil Bhi Kitna Pagal Hai", movie: "Saajan", file: "/music/song4.wav" },
-  { title: "Tum Mile Dil Khile", movie: "Criminal", file: "/music/song5.wav" },
-  { title: "Kuch Na Kaho", movie: "1942: A Love Story", file: "/music/song6.wav" },
+  { title: "Ghoonghat Ki Aad Se", movie: "Hum Hain Rahi Pyar Ke", file: "/music/ghoonghat.mp3" },
+  { title: "Pehla Nasha", movie: "Jo Jeeta Wohi Sikandar", file: "/music/pehla-nasha.mp3" },
+  { title: "Do Dil Mil Rahe Hain", movie: "Pardes", file: "/music/do-dil-mil-rahe-hain.mp3" },
+  { title: "Ek Ladki Ko Dekha", movie: "1942: A Love Story", file: "/music/ek-ladki-ko-dekha.mp3" },
+  { title: "Mera Dil Bhi Kitna Pagal Hai", movie: "Saajan", file: "/music/mera-dil-bhi-kitna-pagal-hai.mp3" },
+  { title: "Tu Mile Dil Khile", movie: "Criminal", file: "/music/tu-mile-dil-khile.mp3" },
+  { title: "Kuch Na Kaho", movie: "1942: A Love Story", file: "/music/kuch-na-kaho.mp3" },
 ];
 
 function timeText(value) {
@@ -55,7 +56,7 @@ export default function App() {
     if (playing) {
       player.play().catch(() => {
         setPlaying(false);
-        setError("Audio nahi chali. public/music folder mein WAV files check karo.");
+        setError("Audio nahi chali. public/music folder mein MP3 filenames check karo.");
       });
     }
   }, [index]);
@@ -179,7 +180,7 @@ export default function App() {
 
               <h2>{song.title}</h2>
               <p>{song.movie} · Kumar Sanu collection</p>
-              <small>TRACK {String(index + 1).padStart(2, "0")} / 06</small>
+              <small>TRACK {String(index + 1).padStart(2, "0")} / {String(songs.length).padStart(2, "0")}</small>
             </div>
           </div>
 
@@ -289,7 +290,7 @@ export default function App() {
             <div className="playlist">
               <div className="playlist-heading">
                 <span>KUMAR SANU COLLECTION</span>
-                <span>06 SONGS</span>
+                <span>{String(songs.length).padStart(2, "0")} SONGS</span>
               </div>
 
               {songs.map((item, i) => (
@@ -358,7 +359,7 @@ export default function App() {
         onError={() => {
           setPlaying(false);
           setError(
-            "Audio file nahi mili. public/music folder mein song1.wav se song6.wav check karo."
+            "Audio file load nahi hui. GitHub par public/music folder aur MP3 filename exact match check karo."
           );
         }}
       />
